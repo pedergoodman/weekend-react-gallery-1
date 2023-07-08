@@ -16,7 +16,7 @@ const galleryItems = [
    {
     id: 3,
     path: "images/Mecca.jpg",
-    title:"Egypt",
+    title:"Mecca",
     description: "Location in Mecca.",
     likes: 0,
   },
@@ -30,17 +30,20 @@ const galleryItems = [
   {
     id: 5,
     path: "images/Palestine.jpg",
-    title:"Medina",
+    title:"Palestine",
     description: "Location in Palestine.",
     likes: 0,
   },
   {
     id: 6,
     path: "images/Somalia.jpg",
-    title:"Medina",
+    title:"Somalia",
     description: "Location in Somalia.",
     likes: 0,
   },
 ];
 
 module.exports = galleryItems;
+
+
+
