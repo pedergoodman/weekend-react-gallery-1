@@ -30,7 +30,7 @@ const handleLikesStatus = () => {
                     component="img"
                     height="140"
                     onClick={swapImageDescription}
-                    image={GalleryItem.path}
+                    image={GalleryItem.image}
                     alt="Gallery Images"
                   />}
                   <CardContent>
