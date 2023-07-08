@@ -5,7 +5,7 @@ const GalleryList = ({ GalleringList, updateLikes }) => {
     <div className="card">
       {GalleringList.map(GalleryItems => {
         return (
-          <GalleryItem GalleryItem={GalleryItems} key={GalleryItems.id}/>
+          <GalleryItem GalleryItem={GalleryItems} key={GalleryItems.id} updateLikes={updateLikes}/>
         );
       })}
     </div>

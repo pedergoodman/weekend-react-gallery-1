@@ -7,10 +7,17 @@ import {
   Grid,
   CardContent,
 } from "@mui/material";
-const GalleryItem = ({ GalleryItem }) => {
+const GalleryItem = ({ GalleryItem,updateLikes }) => {
+// STATES
 const [ showDescription, setShowDescription] = useState(false);
-const imageDescription = () => {
+
+// Swap the Image and Description
+const swapImageDescription = () => {
   setShowDescription(!showDescription);
+}
+// Update the likes
+const handleLikesStatus = () => {
+  updateLikes(GalleryItem.id);
 }
   return (
     <div className="cardAction">
@@ -22,7 +29,7 @@ const imageDescription = () => {
                  {!showDescription && <CardMedia
                     component="img"
                     height="140"
-                    onClick={imageDescription}
+                    onClick={swapImageDescription}
                     image={GalleryItem.path}
                     alt="Gallery Images"
                   />}
@@ -30,9 +37,9 @@ const imageDescription = () => {
                     <Typography gutterBottom variant="h5" component="div">
                       {GalleryItem.title}
                     </Typography>
-                    <button>Like</button>
+                    <button onClick={handleLikesStatus}>Like</button>
                     <Typography variant="body2" color="text.secondary">
-                      0 Likes
+                      {GalleryItem.likes} Likes
                     </Typography>
                   </CardContent>
                 </CardActionArea>
