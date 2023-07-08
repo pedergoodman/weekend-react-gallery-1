@@ -13,6 +13,11 @@
   font-size: 1.5em;
 }
 .card{
+  padding: 1rem 2rem;
   display: flex;
+  justify-content: center;
   gap: 1rem;
+}
+.cardAction{
+  width: 20rem;
 }

@@ -7,6 +7,8 @@ import GalleryItem from '../GalleryItem/GalleryItem';
 function App() {
   // using States
   const [galleryList, setGalleryList] = useState([]);
+
+
   // GET 
   const getGalleryList = () => {
     // GET METHOD for the gallery
@@ -21,6 +23,16 @@ function App() {
       alert('ERROR in getting the gallery!');
     })
   }
+
+const updateLikesStatus = (likeId) => {
+  Axios.put(`/gallery/like/${likeId}`)
+  .then((response) => {
+    getGalleryList();
+  }).catch((error) => {
+    console.log('ERROR',error);
+    alert('ERROR updating the Likes!');
+  })
+}
   //Initial load for getting the Gallery 
   useEffect(() => {
     getGalleryList();
