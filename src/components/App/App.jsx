@@ -18,7 +18,7 @@ function App() {
       })
       // Catch any Errors
       .catch(error => {
-        console.log("ERROR is getting the Gallerys:", error);
+        console.log("ERROR in getting the Gallerys:", error);
         alert("ERROR in getting the gallery!");
       });
   };
@@ -34,6 +34,14 @@ function App() {
         alert("ERROR updating the Likes!");
       });
   };
+  const deleteByGalleryId = id => {
+    Axios.delete(`/gallery/delete/${id}`)
+    .then((response) => {
+        getGalleryList();
+    }).catch((error) => {
+      console.log('ERROR in deleting by id',error);
+    })
+  }
   //Initial load for getting the Gallery
   useEffect(() => {
     getGalleryList();
@@ -45,6 +53,7 @@ function App() {
       <GalleryList
         GalleringList={galleryList}
         updateLikes={updateLikesStatus}
+        deleteByGalleryId={deleteByGalleryId}
       />
     </div>
   );

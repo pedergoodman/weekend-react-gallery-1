@@ -21,3 +21,8 @@
 .cardAction{
   width: 20rem;
 }
+.btn-action{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

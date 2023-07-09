@@ -7,7 +7,7 @@ import {
   Grid,
   CardContent,
 } from "@mui/material";
-const GalleryItem = ({ GalleryItem,updateLikes }) => {
+const GalleryItem = ({ GalleryItem,updateLikes,deleteByGalleryId }) => {
 // STATES
 const [ showDescription, setShowDescription] = useState(false);
 
@@ -18,6 +18,10 @@ const swapImageDescription = () => {
 // Update the likes
 const handleLikesStatus = () => {
   updateLikes(GalleryItem.id);
+}
+// Delete by Id
+const handleDelete = () => {
+  deleteByGalleryId(GalleryItem.id);
 }
   return (
     <div className="cardAction">
@@ -37,7 +41,10 @@ const handleLikesStatus = () => {
                     <Typography gutterBottom variant="h5" component="div">
                       {GalleryItem.title}
                     </Typography>
+                    <div className="btn-action">
                     <button onClick={handleLikesStatus}>Like</button>
+                    <button onClick={handleDelete}>Delete</button>
+                    </div>
                     <Typography variant="body2" color="text.secondary">
                       {GalleryItem.likes} Likes
                     </Typography>
