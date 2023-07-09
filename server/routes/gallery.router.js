@@ -16,8 +16,21 @@ const pool = require('../modules/pool');
 //     }
 //     res.sendStatus(200);
 // }); // END PUT Route
-// PUT Route for Likes
+// GET Route - it will get all of data from gallery table
+router.get('/', (req, res) => {
+    let sqlList = 'SELECT * FROM "gallery";';
+    
+    pool.query(sqlList)
+    .then((result) => {
+        console.log('DB recieved the gallery')
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log(`ERROR making DB query ${sqlList}`,error )
+    })
+}); // END GET Route
+// PUT route -- It update likes status
 router.put('/like/:id', (req, res) => {
+    // Request/Get the id selected
     const galleryId = req.params.id;
     // Need to figure out how to increment everytime. Could this issue be in setting up the table or add += 1 in Client?
     const sqlText = `
@@ -31,17 +44,23 @@ router.put('/like/:id', (req, res) => {
       res.sendStatus(500)
     });
   })
-// GET Route
-router.get('/', (req, res) => {
-    let sqlList = 'SELECT * FROM "gallery";';
+// DELETE Route It will delete by Id seleceted
+router.delete('/delete/:id', (req,res) => {
+    const galleryId = req.params.id;
 
-    pool.query(sqlList)
-    .then((result) => {
-        console.log('DB recieved the gallery')
-        res.send(result.rows);
+    const sqlDelete = `DELETE FROM "gallery" WHERE id = $1`;
+
+    pool.query(sqlDelete,[galleryId])
+
+    .then((response) => {
+        // Send an OK status
+        res.sendStatus(201);
+    // Catch any Error
     }).catch((error) => {
-        console.log(`ERROR making DB query ${sqlList}`,error )
+        console.log(`ERROR in: ${sqlDelete}`, error);
+        // Send an Error status
+        res.sendStatus(500);
     })
-}); // END GET Route
+})
 
 module.exports = router;
