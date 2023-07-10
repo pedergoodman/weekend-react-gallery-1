@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "../Header/Header";
 import Axios from "axios";
 import GalleryList from "../GalleryList/GalleryList";
+import GalleryForm from "../GalleryForm/GalleryForm";
 function App() {
   // using States
   const [galleryList, setGalleryList] = useState([]);
@@ -55,6 +56,7 @@ function App() {
         updateLikes={updateLikesStatus}
         deleteByGalleryId={deleteByGalleryId}
       />
+
     </div>
   );
 }

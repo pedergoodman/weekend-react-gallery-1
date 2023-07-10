@@ -22,7 +22,11 @@
   width: 20rem;
 }
 .btn-action{
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+.submit-btn{
+  margin-top: 1rem;
 }
