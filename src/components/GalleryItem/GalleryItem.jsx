@@ -8,7 +8,7 @@ import {
   CardContent,
   Button
 } from "@mui/material";
-
+import Swal from 'sweetalert2'
 const GalleryItem = ({ GalleryItem, updateLikes, deleteByGalleryId }) => {
   // STATES
   const [showDescription, setShowDescription] = useState(false);
@@ -23,7 +23,24 @@ const GalleryItem = ({ GalleryItem, updateLikes, deleteByGalleryId }) => {
   };
   // Delete by Id
   const handleDelete = () => {
-    deleteByGalleryId(GalleryItem.id);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteByGalleryId(GalleryItem.id);
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
   };
   return (
     <div className="cardAction">
