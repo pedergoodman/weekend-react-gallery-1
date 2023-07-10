@@ -34,7 +34,7 @@ router.put('/like/:id', (req, res) => {
     const galleryId = req.params.id;
     // Need to figure out how to increment everytime. Could this issue be in setting up the table or add += 1 in Client?
     const sqlText = `
-    UPDATE gallery SET "likes" = 1 WHERE id = $1;
+    UPDATE gallery SET "likes" = likes + 1 WHERE id = $1;
     `
     pool.query(sqlText, [galleryId])
     .then((result) => {

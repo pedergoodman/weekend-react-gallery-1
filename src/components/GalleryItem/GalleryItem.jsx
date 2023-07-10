@@ -48,8 +48,8 @@ const GalleryItem = ({ GalleryItem, updateLikes, deleteByGalleryId }) => {
         <Grid item xs={10} lg={10} md={10}>
           <Card>
             <CardActionArea>
-              {showDescription && <p>{GalleryItem.description}</p>}
-              {!showDescription && (
+              {/* {showDescription && <p>{GalleryItem.description}</p>} */}
+              {!showDescription ? (
                 <CardMedia
                   component="img"
                   height="140"
@@ -57,7 +57,7 @@ const GalleryItem = ({ GalleryItem, updateLikes, deleteByGalleryId }) => {
                   image={GalleryItem.image}
                   alt="Gallery Images"
                 />
-              )}
+              )  :  (<p>{GalleryItem.description}</p>)}
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {GalleryItem.title}
